@@ -1,0 +1,21 @@
+
+<!-- <mat-grid-list cols="1" rowHeight="1:1" class="grid-layout-custom">
+  <mat-grid-tile>
+    <youtube-player videoId="mVjYG9TSN88" loadApi="false"/>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field class="example-full-width">
+      <span matPrefix> </span>
+      <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+      <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>    
+</mat-grid-list>
+   -->
+<youtube-player  placeholderImageQuality="high" videoId="mVjYG9TSN88" loadApi="true" [playerVars]="{'autoplay': 1, 'controls': 0, 'rel': 0}" disablePlaceholder/>
+<mat-form-field class="example-full-width">
+  <span matPrefix> </span>
+  <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+  <button matSuffix mat-button><mat-icon >search</mat-icon></button>
+</mat-form-field>
