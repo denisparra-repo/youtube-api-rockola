@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { YouTubePlayer, YOUTUBE_PLAYER_CONFIG } from '@angular/youtube-player';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatFormFieldModule,
     YouTubePlayer,
-    MatInputModule
+    MatInputModule,
+    MatListModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync(),

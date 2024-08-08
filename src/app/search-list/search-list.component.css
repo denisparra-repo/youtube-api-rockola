@@ -1,0 +1,15 @@
+youtube-player {
+    width: 100% !important;
+}
+
+youtube-player > div > iframe {
+    width: 100%  !important;
+}
+
+mat-form-field {
+    width: 100% !important;
+}
+
+.mdc-checkbox {
+    display: none !important;
+}
