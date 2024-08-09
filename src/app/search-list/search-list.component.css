@@ -1,9 +1,6 @@
-youtube-player {
+#image {
     width: 100% !important;
-}
-
-youtube-player > div > iframe {
-    width: 100%  !important;
+    height: 300px !important;
 }
 
 mat-form-field {

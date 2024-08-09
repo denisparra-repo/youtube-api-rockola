@@ -15,11 +15,15 @@ import { YouTubePlayer, YOUTUBE_PLAYER_CONFIG } from '@angular/youtube-player';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
+import { YoutubeService } from './youtube.service';
+import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchListComponent
+    SearchListComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,
@@ -32,16 +36,13 @@ import { HttpClientModule } from '@angular/common/http';
     YouTubePlayer,
     MatInputModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     provideAnimationsAsync(),
-    {
-      provide: YOUTUBE_PLAYER_CONFIG,
-      useValue: {
-        loadApi: false
-      }
-    }
+    YoutubeService,
+    NgxSpinnerService
   ],
   bootstrap: [AppComponent]
 })
