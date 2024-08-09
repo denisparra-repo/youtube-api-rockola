@@ -15,7 +15,7 @@ export class SearchListComponent {
   endSeconds = 75;
   data: any = {'autoplay': 1,  'rel': 0, 'fs': 1, 'disablekb': 1}
   innertHTMLText= ""
-  image = "logo.jpg";
+  image = "assets/logo.jpg";
   isImageDisplayed = true;
   constructor(private spinner: NgxSpinnerService, private youtubeService: YoutubeService) {}
 
