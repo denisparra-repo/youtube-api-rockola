@@ -20,7 +20,7 @@ jobs:
      env: 
       ENV_DETAILS: '${{secrets.ENV_DETAILS}}'
    - name: Build
-     run: npm run build --prod
+     run: npm run build
    - name: Deploy to Firebase
      uses: w9jds/firebase-action@master
      with:
