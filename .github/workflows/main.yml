@@ -1,0 +1,30 @@
+on:
+  pull_request:
+    branches:
+     -main
+jobs:
+ lint:
+  runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@v4.1.7
+   - uses: actions/setup-node@v4.0.3
+   - run: npm install && npm run lint
+ deploy:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v4.1.7
+   - name: Install node 
+     uses: actions/setup-node@v4.0.3
+   - name: Generate environment variables  
+     run: node server.js
+     env: 
+      ENV_DETAILS: '${{secrets.ENV_DETAILS}}'
+   - name: Build
+     run: npm run build --prod
+   - name: Deploy to Firebase
+     uses: w9jds/firebase-action@master
+     with:
+          args: deploy --only hosting
+     env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
