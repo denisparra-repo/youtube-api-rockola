@@ -4,13 +4,14 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { YoutubeSearchResponse } from './model/youtubeSearch';
 import { Video } from './model/video';
+import {environment } from '../../src/environments/env';
 
 @Injectable({
   providedIn: 'root',
 })
 export class YoutubeService {
   private API_URL = 'https://www.googleapis.com/youtube/v3/search';
-  private API_TOKEN = '';
+  private API_TOKEN = environment.GOOGLE_API_KEY;
 
   constructor(private http: HttpClient) {}
 
