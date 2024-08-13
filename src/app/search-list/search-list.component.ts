@@ -1,63 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { YoutubeService } from '../youtube.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Video } from '../model/video';
 
 @Component({
   selector: 'app-search-list',
   templateUrl: './search-list.component.html',
-  styleUrl: './search-list.component.css'
+  styleUrl: './search-list.component.css',
 })
 export class SearchListComponent {
-  search : string ="";
-  videos: any[] = [];
-  idVideo = ""
-  startSeconds: number = 60;
-  endSeconds = 75;
-  data: any = {'autoplay': 1,  'rel': 0, 'fs': 1, 'disablekb': 1}
-  innertHTMLText= ""
-  image = "assets/logo.jpg";
-  isImageDisplayed = true;
-  constructor(private spinner: NgxSpinnerService, private youtubeService: YoutubeService) {}
+  search: string = '';
+  videos: Video[] = [];
+  idVideo = '';
+  image = 'assets/logo.jpg';
 
+  constructor(
+    private spinner: NgxSpinnerService,
+    private youtubeService: YoutubeService
+  ) {}
 
-  selectVideo(videoInfo: any) {
-    //this.idVideo = videoInfo.id.videoId;
+  updateImage(videoInfo: Video) {
     this.image = videoInfo.snippet.thumbnails.high.url;
   }
 
   searchVideo() {
-    this.spinner.show()
+    this.spinner.show();
     this.videos = [];
-    this.youtubeService
-    .getVideos(this.search)
-    .subscribe(lista => {
-      console.log(lista)
-    this.videos = lista
-    console.log(this.videos)
-    this.spinner.hide()
+    this.youtubeService.getVideos(this.search).subscribe(lista => {
+      this.videos = lista;
+      this.spinner.hide();
     });
   }
 
-  changes(e: any) {
-    console.log(e);
-    console.log(e.target.getPlayerState());
+  changes(e: YT.OnStateChangeEvent) {
     if (e.target.getPlayerState() == 0) {
-      this.idVideo = "";
+      this.idVideo = '';
     }
   }
 
-  onSelection(e: any) {
-    console.log(e)
-  }
-
-  play(video: any) {
+  play(video: Video) {
     this.idVideo = video.id.videoId;
-    setTimeout(() => {document.getElementsByTagName("iframe")[0].className = "fullScreen";}, 2000);
+    setTimeout(() => {
+      document.getElementsByTagName('iframe')[0].className = 'fullScreen';
+    }, 1000);
   }
-
-  playFullScreen(e: any) {
-    console.log("ready::", e);
-    (<any>document.getElementById('player'))?.contentWindow.requestFullscreen();
-  }
-
 }

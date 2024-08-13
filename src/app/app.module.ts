@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { YouTubePlayer, YOUTUBE_PLAYER_CONFIG } from '@angular/youtube-player';
+import { YouTubePlayer } from '@angular/youtube-player';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,11 +20,7 @@ import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
 import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchListComponent,
-    SafeHtmlPipe
-  ],
+  declarations: [AppComponent, SearchListComponent, SafeHtmlPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -37,13 +33,9 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     MatInputModule,
     MatListModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
-  providers: [
-    provideAnimationsAsync(),
-    YoutubeService,
-    NgxSpinnerService
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideAnimationsAsync(), YoutubeService, NgxSpinnerService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,30 +1,33 @@
-
-<!-- <mat-grid-list cols="1" rowHeight="1:1" class="grid-layout-custom">
-  <mat-grid-tile>
-    <youtube-player videoId="mVjYG9TSN88" loadApi="false"/>
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <mat-form-field class="example-full-width">
-      <span matPrefix> </span>
-      <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
-      <button matSuffix mat-button><mat-icon >search</mat-icon></button>
-    </mat-form-field>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>    
-</mat-grid-list>
-   -->
-
-<img id="image" [src]="image" />
+<img id="image" [src]="image" alt="Preview Image" />
 <mat-form-field class="example-full-width">
   <span matPrefix> </span>
-  <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search" (keyup.Enter)="searchVideo()">
-  <button (click)="searchVideo()" matSuffix mat-button><mat-icon >search</mat-icon></button>
+  <input
+    type="tel"
+    matInput
+    placeholder="Search"
+    name="search"
+    [(ngModel)]="search"
+    (keyup.Enter)="searchVideo()" />
+  <button (click)="searchVideo()" matSuffix mat-button>
+    <mat-icon>search</mat-icon>
+  </button>
 </mat-form-field>
 <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-<mat-selection-list #shoes (selectionChange)="onSelection($event)">
-  <!-- @for (entry of videos; track entry) {
-    <mat-list-option>{{entry[0]}}</mat-list-option>
-  } -->
-  <mat-list-option (click)="selectVideo(video)" (keyup.ArrowUp)="selectVideo(video)" (keyup.ArrowDown)="selectVideo(video)" (keyup.Enter)="play(video)"  [value]= video *ngFor="let video of videos">{{video.snippet.title}}</mat-list-option>
+<mat-selection-list #shoes>
+  <mat-list-option
+    (click)="updateImage(video)"
+    (keyup.ArrowUp)="updateImage(video)"
+    (keyup.ArrowDown)="updateImage(video)"
+    (keyup.Enter)="play(video)"
+    [value]="video"
+    *ngFor="let video of videos"
+    >{{ video.snippet.title }}</mat-list-option
+  >
 </mat-selection-list>
-<youtube-player  placeholderImageQuality="high" [videoId]="idVideo" loadApi="true" [playerVars]="data" disablePlaceholder (stateChange)="changes($event)" (ready)="playFullScreen($event)" />
+<youtube-player
+  placeholderImageQuality="high"
+  [videoId]="idVideo"
+  loadApi="true"
+  [playerVars]="{ autoplay: 1, rel: 0, fs: 1, disablekb: 1 }"
+  disablePlaceholder
+  (stateChange)="changes($event)" />

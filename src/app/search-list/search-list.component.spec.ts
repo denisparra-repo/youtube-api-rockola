@@ -8,10 +8,9 @@ describe('SearchListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SearchListComponent]
-    })
-    .compileComponents();
-    
+      declarations: [SearchListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(SearchListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
