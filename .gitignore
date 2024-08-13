@@ -45,3 +45,6 @@ Thumbs.db
 .nx/workspace-data
 # Project files
 /src/environments/*
+
+# Build
+/dist/*
